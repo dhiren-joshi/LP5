@@ -1,0 +1,50 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
+d = pd.read_csv("HousingData.csv")
+
+# Remove rows containing NaN values
+d = d.dropna()
+
+X = d.drop("MEDV", axis=1)
+y = d["MEDV"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+m = LinearRegression()
+m.fit(X_train, y_train)
+
+print(m.predict(X_test))
+
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+d = pd.read_csv("HousingData.csv")
+
+# Remove missing values
+d = d.dropna()
+
+X = d.drop("MEDV", axis=1)
+y = d["MEDV"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Deep Neural Network
+m = Sequential([
+    Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
+    Dense(1)
+])
+
+m.compile(optimizer='adam', loss='mse')
+
+m.fit(X_train, y_train, epochs=5, verbose=0)
+
+print(m.predict(X_test))

@@ -1,0 +1,20 @@
+from tensorflow.keras.datasets import fashion_mnist
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D,MaxPooling2D,Flatten,Dense
+
+(x,y),(a,b)=fashion_mnist.load_data()
+
+x,a=x.reshape(-1,28,28,1)/255.0,a.reshape(-1,28,28,1)/255.0
+
+m=Sequential([
+    Conv2D(32,(3,3),activation='relu',input_shape=(28,28,1)),
+    MaxPooling2D(),
+    Flatten(),
+    Dense(10,activation='softmax')
+])
+
+m.compile("adam","sparse_categorical_crossentropy",metrics=["accuracy"])
+
+m.fit(x,y,epochs=2)
+
+print(m.evaluate(a,b))

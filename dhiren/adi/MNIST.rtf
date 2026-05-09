@@ -1,0 +1,344 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2868
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier-Bold;\f1\fmodern\fcharset0 Courier;\f2\froman\fcharset0 Times-Roman;
+\f3\fmodern\fcharset0 Courier-Oblique;}
+{\colortbl;\red255\green255\blue255;\red25\green111\blue42;\red25\green25\blue25;\red242\green242\blue242;
+\red217\green217\blue217;\red0\green0\blue0;\red109\green51\blue215;\red7\green64\blue153;\red169\green14\blue26;
+\red71\green80\blue91;}
+{\*\expandedcolortbl;;\cssrgb\c10196\c49804\c21569;\cssrgb\c12941\c12941\c12941;\cssrgb\c96078\c96078\c96078;
+\cssrgb\c87843\c87843\c87843;\cssrgb\c0\c0\c0\c87059;\cssrgb\c50980\c31373\c87451;\cssrgb\c0\c33333\c66667;\cssrgb\c72941\c12941\c12941;
+\cssrgb\c34902\c38824\c43137;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs26 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 import
+\f1\b0 \cf3 \strokec3  matplotlib.pyplot 
+\f0\b \cf2 \strokec2 as
+\f1\b0 \cf3 \strokec3  plt\
+
+\f0\b \cf2 \strokec2 import
+\f1\b0 \cf3 \strokec3  pandas 
+\f0\b \cf2 \strokec2 as
+\f1\b0 \cf3 \strokec3  pd\
+
+\f0\b \cf2 \strokec2 import
+\f1\b0 \cf3 \strokec3  numpy 
+\f0\b \cf2 \strokec2 as
+\f1\b0 \cf3 \strokec3  np\
+\
+
+\itap1\trowd \taflags4 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat4 \clwWidth22020\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf5 \clbrdrr\brdrs\brdrw20\brdrcf5 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf3 \cb4 \strokec3 train_df 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  pd
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 read_csv\cf8 \strokec8 (\cf9 \strokec9 'fashion-mnist_train.csv'\cf8 \strokec8 )\cf3 \strokec3 \
+test_df 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  pd
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 read_csv\cf8 \strokec8 (\cf9 \strokec9 'fashion-mnist_test.csv'\cf8 \strokec8 )\cf3 \strokec3 \cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf6 \cb1 \strokec6 \
+
+\itap1\trowd \taflags4 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat4 \clwWidth22020\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf5 \clbrdrb\brdrs\brdrw20\brdrcf5 \clbrdrr\brdrs\brdrw20\brdrcf5 \clpadl0 \clpadr0 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1 \cf3 \cb4 \strokec3 train_df
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 shape\cb1 \
+\cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 test_df
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 shape\
+\
+train_df
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 describe\cf8 \strokec8 ()\cf3 \strokec3 \
+\
+train_df
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 label
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 unique\cf8 \strokec8 ()\cf3 \strokec3 \
+\
+class_names 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  \cf8 \strokec8 [\cf9 \strokec9 'T-shirt/top'\cf8 \strokec8 ,\cf3 \strokec3  \cf9 \strokec9 'Trouser'\cf8 \strokec8 ,\cf3 \strokec3  \cf9 \strokec9 'Pullover'\cf8 \strokec8 ,\cf3 \strokec3  \cf9 \strokec9 'Dress'\cf8 \strokec8 ,\cf3 \strokec3  \cf9 \strokec9 'Coat'\cf8 \strokec8 ,\cf9 \strokec9 'Sandal'\cf8 \strokec8 ,\cf3 \strokec3  \cf9 \strokec9 'Shirt'\cf8 \strokec8 ,\cf3 \strokec3  \cf9 \strokec9 'Sneaker'\cf8 \strokec8 ,\cf3 \strokec3  \cf9 \strokec9 'Bag'\cf8 \strokec8 ,\cf3 \strokec3  \cf9 \strokec9 'Ankle boot'\cf8 \strokec8 ]\cf3 \strokec3 \
+\
+x_train 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  train_df
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 iloc\cf8 \strokec8 [:,\cf2 \strokec2 1\cf8 \strokec8 :]
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 to_numpy\cf8 \strokec8 ()\cf3 \strokec3 \
+x_train 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  x_train
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 reshape\cf8 \strokec8 ([
+\f0\b \cf7 \strokec7 -
+\f1\b0 \cf2 \strokec2 1\cf8 \strokec8 ,\cf2 \strokec2 28\cf8 \strokec8 ,\cf2 \strokec2 28\cf8 \strokec8 ,\cf2 \strokec2 1\cf8 \strokec8 ])\cf3 \strokec3 \
+x_train 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  x_train 
+\f0\b \cf7 \strokec7 /
+\f1\b0 \cf3 \strokec3  \cf2 \strokec2 255\cf3 \strokec3 \
+\
+y_train 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  train_df
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 iloc\cf8 \strokec8 [:,\cf2 \strokec2 0\cf8 \strokec8 ]
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 to_numpy\cf8 \strokec8 ()\cf3 \strokec3 \
+\
+x_test 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  test_df
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 iloc\cf8 \strokec8 [:,\cf2 \strokec2 1\cf8 \strokec8 :]
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 to_numpy\cf8 \strokec8 ()\cf3 \strokec3 \
+x_test 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  x_test
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 reshape\cf8 \strokec8 ([
+\f0\b \cf7 \strokec7 -
+\f1\b0 \cf2 \strokec2 1\cf8 \strokec8 ,\cf2 \strokec2 28\cf8 \strokec8 ,\cf2 \strokec2 28\cf8 \strokec8 ,\cf2 \strokec2 1\cf8 \strokec8 ])\cf3 \strokec3 \
+x_test 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  x_test 
+\f0\b \cf7 \strokec7 /
+\f1\b0 \cf3 \strokec3  \cf2 \strokec2 255\cf3 \strokec3 \
+\
+y_test 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  test_df
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 iloc\cf8 \strokec8 [:,\cf2 \strokec2 0\cf8 \strokec8 ]
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 to_numpy\cf8 \strokec8 ()\cf3 \strokec3 \
+\
+plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 figure\cf8 \strokec8 (\cf3 \strokec3 figsize
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf8 \strokec8 (\cf2 \strokec2 10\cf8 \strokec8 ,\cf2 \strokec2 10\cf8 \strokec8 ))\cf3 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 \strokec2 for
+\f1\b0 \cf3 \strokec3  i 
+\f0\b \cf7 \strokec7 in
+\f1\b0 \cf3 \strokec3  range\cf8 \strokec8 (\cf2 \strokec2 25\cf8 \strokec8 ):\cf3 \strokec3 \
+    plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 subplot\cf8 \strokec8 (\cf2 \strokec2 5\cf8 \strokec8 ,\cf2 \strokec2 5\cf8 \strokec8 ,\cf3 \strokec3 i
+\f0\b \cf7 \strokec7 +
+\f1\b0 \cf2 \strokec2 1\cf8 \strokec8 )\cf3 \strokec3 \
+    plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 xticks\cf8 \strokec8 ([])\cf3 \strokec3 \
+    plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 yticks\cf8 \strokec8 ([])\cf3 \strokec3 \
+    plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 grid\cf8 \strokec8 (
+\f0\b \cf2 \strokec2 False
+\f1\b0 \cf8 \strokec8 )\cf3 \strokec3 \
+    plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 imshow\cf8 \strokec8 (\cf3 \strokec3 x_train\cf8 \strokec8 [\cf3 \strokec3 i\cf8 \strokec8 ],\cf3 \strokec3  cmap
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3 plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 cm
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 binary\cf8 \strokec8 )\cf3 \strokec3 \
+    plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 xlabel\cf8 \strokec8 (\cf3 \strokec3 class_names\cf8 \strokec8 [\cf3 \strokec3 y_train\cf8 \strokec8 [\cf3 \strokec3 i\cf8 \strokec8 ]])\cf3 \strokec3 \
+plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 show\cf8 \strokec8 ()\cf3 \strokec3 \
+\
+
+\f0\b \cf2 \strokec2 from
+\f1\b0 \cf3 \strokec3  keras.models 
+\f0\b \cf2 \strokec2 import
+\f1\b0 \cf3 \strokec3  Sequential\
+
+\f0\b \cf2 \strokec2 from
+\f1\b0 \cf3 \strokec3  keras.layers 
+\f0\b \cf2 \strokec2 import
+\f1\b0 \cf3 \strokec3  Dense\cf8 \strokec8 ,\cf3 \strokec3 Conv2D\cf8 \strokec8 ,\cf3 \strokec3 Flatten\cf8 \strokec8 ,\cf3 \strokec3 MaxPooling2D\cf8 \strokec8 ,\cf3 \strokec3 Dropout\
+\
+model 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  Sequential\cf8 \strokec8 ()\cf3 \strokec3 \
+\
+model
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 add\cf8 \strokec8 (\cf3 \strokec3 Conv2D\cf8 \strokec8 (\cf3 \strokec3 filters
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf2 \strokec2 64\cf8 \strokec8 ,\cf3 \strokec3 kernel_size
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf8 \strokec8 (\cf2 \strokec2 3\cf8 \strokec8 ,\cf2 \strokec2 3\cf8 \strokec8 ),\cf3 \strokec3 input_shape
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf8 \strokec8 (\cf2 \strokec2 28\cf8 \strokec8 ,\cf2 \strokec2 28\cf8 \strokec8 ,\cf2 \strokec2 1\cf8 \strokec8 ),\cf3 \strokec3 activation
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf9 \strokec9 'relu'\cf8 \strokec8 ))\cf3 \strokec3 \
+model
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 add\cf8 \strokec8 (\cf3 \strokec3 MaxPooling2D\cf8 \strokec8 (\cf3 \strokec3 pool_size 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  \cf8 \strokec8 (\cf2 \strokec2 2\cf8 \strokec8 ,\cf2 \strokec2 2\cf8 \strokec8 )))\cf3 \strokec3 \
+model
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 add\cf8 \strokec8 (\cf3 \strokec3 Dropout\cf8 \strokec8 (\cf3 \strokec3 rate
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf2 \strokec2 0.3\cf8 \strokec8 ))\cf3 \strokec3 \
+model
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 add\cf8 \strokec8 (\cf3 \strokec3 Flatten\cf8 \strokec8 ())\cf3 \strokec3 \
+model
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 add\cf8 \strokec8 (\cf3 \strokec3 Dense\cf8 \strokec8 (\cf3 \strokec3 units
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf2 \strokec2 32\cf8 \strokec8 ,\cf3 \strokec3  activation
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf9 \strokec9 'relu'\cf8 \strokec8 ))\cf3 \strokec3 \
+model
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 add\cf8 \strokec8 (\cf3 \strokec3 Dense\cf8 \strokec8 (\cf3 \strokec3 units
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf2 \strokec2 10\cf8 \strokec8 ,\cf3 \strokec3  activation
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf9 \strokec9 'sigmoid'\cf8 \strokec8 ))\cf3 \strokec3 \
+model
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 compile\cf8 \strokec8 (\cf3 \strokec3 loss
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf9 \strokec9 'sparse_categorical_crossentropy'\cf8 \strokec8 ,\cf3 \strokec3 optimizer
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf9 \strokec9 'adam'\cf8 \strokec8 ,\cf3 \strokec3 metrics
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf8 \strokec8 [\cf9 \strokec9 'accuracy'\cf8 \strokec8 ])\cf3 \strokec3 \
+model
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 summary\cf8 \strokec8 ()\cf3 \strokec3 \
+\
+model
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 fit\cf8 \strokec8 (\cf3 \strokec3 x_train\cf8 \strokec8 ,\cf3 \strokec3 y_train\cf8 \strokec8 ,\cf3 \strokec3 epochs
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf2 \strokec2 50\cf8 \strokec8 ,\cf3 \strokec3 batch_size
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf2 \strokec2 1200\cf8 \strokec8 ,\cf3 \strokec3 validation_split
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf2 \strokec2 0.05\cf8 \strokec8 )\cf3 \strokec3 \
+\
+evaluation 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  model
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 evaluate\cf8 \strokec8 (\cf3 \strokec3 x_test\cf8 \strokec8 ,\cf3 \strokec3 y_test\cf8 \strokec8 )\cf3 \strokec3 \
+\
+print\cf8 \strokec8 (\cf9 \strokec9 f"Accuracy: \{\cf3 \strokec3 evaluation\cf8 \strokec8 [\cf2 \strokec2 1\cf8 \strokec8 ]\cf9 \strokec9 \}"\cf8 \strokec8 )\cf3 \strokec3 \
+\
+y_probas 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  model
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 predict\cf8 \strokec8 (\cf3 \strokec3 x_test\cf8 \strokec8 )\cf3 \strokec3 \
+\
+y_pred 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  y_probas
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 argmax\cf8 \strokec8 (\cf3 \strokec3 axis
+\f0\b \cf7 \strokec7 =-
+\f1\b0 \cf2 \strokec2 1\cf8 \strokec8 )\cf3 \strokec3 \
+\
+y_pred\
+\
+plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 figure\cf8 \strokec8 (\cf3 \strokec3 figsize
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf8 \strokec8 (\cf2 \strokec2 10\cf8 \strokec8 ,\cf2 \strokec2 10\cf8 \strokec8 ),)\cf3 \strokec3 \
+
+\f0\b \cf2 \strokec2 for
+\f1\b0 \cf3 \strokec3  i 
+\f0\b \cf7 \strokec7 in
+\f1\b0 \cf3 \strokec3  range\cf8 \strokec8 (\cf2 \strokec2 25\cf8 \strokec8 ):\cf3 \strokec3 \
+    plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 subplot\cf8 \strokec8 (\cf2 \strokec2 5\cf8 \strokec8 ,\cf2 \strokec2 5\cf8 \strokec8 ,\cf3 \strokec3 i
+\f0\b \cf7 \strokec7 +
+\f1\b0 \cf2 \strokec2 1\cf8 \strokec8 )\cf3 \strokec3 \
+    plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 xticks\cf8 \strokec8 ([])\cf3 \strokec3 \
+    plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 yticks\cf8 \strokec8 ([])\cf3 \strokec3 \
+    plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 grid\cf8 \strokec8 (
+\f0\b \cf2 \strokec2 False
+\f1\b0 \cf8 \strokec8 )\cf3 \strokec3 \
+    plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 imshow\cf8 \strokec8 (\cf3 \strokec3 x_test\cf8 \strokec8 [\cf3 \strokec3 i\cf8 \strokec8 ],\cf3 \strokec3  cmap
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3 plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 cm
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 binary\cf8 \strokec8 )\cf3 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\i \cf10 \strokec10 #     plt.xlabel(f"True Class:\{y_test[i]\}")
+\f1\i0 \cf3 \strokec3 \
+    plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 title\cf8 \strokec8 (\cf9 \strokec9 f"Pred:\{\cf3 \strokec3 class_names\cf8 \strokec8 [\cf3 \strokec3 y_pred\cf8 \strokec8 [\cf3 \strokec3 i\cf8 \strokec8 ]]\cf9 \strokec9 \}"\cf8 \strokec8 )\cf3 \strokec3 \
+plt
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 show\cf8 \strokec8 ()\cf3 \strokec3 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 \strokec2 from
+\f1\b0 \cf3 \strokec3  sklearn.metrics 
+\f0\b \cf2 \strokec2 import
+\f1\b0 \cf3 \strokec3  classification_report\
+\
+num_classes 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  \cf2 \strokec2 10\cf3 \strokec3 \
+class_names 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  \cf8 \strokec8 [\cf9 \strokec9 "class \{\}"
+\f0\b \cf7 \strokec7 .
+\f1\b0 \cf3 \strokec3 format\cf8 \strokec8 (\cf3 \strokec3 i\cf8 \strokec8 )\cf3 \strokec3  
+\f0\b \cf2 \strokec2 for
+\f1\b0 \cf3 \strokec3  i 
+\f0\b \cf7 \strokec7 in
+\f1\b0 \cf3 \strokec3  range\cf8 \strokec8 (\cf3 \strokec3 num_classes\cf8 \strokec8 )]\cf3 \strokec3 \
+cr 
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3  classification_report\cf8 \strokec8 (\cf3 \strokec3 y_test\cf8 \strokec8 ,\cf3 \strokec3  y_pred\cf8 \strokec8 ,\cf3 \strokec3  target_names
+\f0\b \cf7 \strokec7 =
+\f1\b0 \cf3 \strokec3 class_names\cf8 \strokec8 )\cf3 \strokec3 \
+print\cf8 \strokec8 (\cf3 \strokec3 cr\cf8 \strokec8 )}

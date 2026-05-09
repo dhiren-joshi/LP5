@@ -1,0 +1,87 @@
+%%writefile vector_add.cu
+#include <iostream>
+#include <cuda_runtime.h>
+
+using namespace std;
+
+// CUDA Kernel
+__global__ void vectorAdd(int *A, int *B, int *C, int n) {
+
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+
+    if (i < n)
+        C[i] = A[i] + B[i];
+}
+
+int main() {
+
+    int n;
+
+    cout << "Enter size of vectors: ";
+    cin >> n;
+
+    int size = n * sizeof(int);
+
+    int *A, *B, *C;
+
+    // Host arrays
+    A = new int[n];
+    B = new int[n];
+    C = new int[n];
+
+    cout << "Enter elements of vector A:\n";
+
+    for (int i = 0; i < n; i++)
+        cin >> A[i];
+
+    cout << "Enter elements of vector B:\n";
+
+    for (int i = 0; i < n; i++)
+        cin >> B[i];
+
+    int *d_A, *d_B, *d_C;
+
+    // Device memory allocation
+    cudaMalloc(&d_A, size);
+    cudaMalloc(&d_B, size);
+    cudaMalloc(&d_C, size);
+
+    // Copy data to GPU
+    cudaMemcpy(d_A, A, size, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_B, B, size, cudaMemcpyHostToDevice);
+
+    // Kernel Launch
+    vectorAdd<<<(n + 255)/256, 256>>>(d_A, d_B, d_C, n);
+
+    // Copy result back
+    cudaMemcpy(C, d_C, size, cudaMemcpyDeviceToHost);
+
+    cout << "\nResult Vector:\n";
+
+    for (int i = 0; i < n; i++)
+        cout << C[i] << " ";
+
+    // Free memory
+    cudaFree(d_A);
+    cudaFree(d_B);
+    cudaFree(d_C);
+
+    delete[] A;
+    delete[] B;
+    delete[] C;
+
+    return 0;
+}
+
+!nvcc vector_add.cu -o vector_add
+
+!./vector_add
+
+Enter size of vectors: 5
+Enter elements of vector A:
+1 2 3 4 5
+Enter elements of vector B:
+5 4 3 2 1
+
+Result Vector:
+6 6 6 6 6 

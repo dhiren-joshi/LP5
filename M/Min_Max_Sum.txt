@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+#include <omp.h>
+
+using namespace std;
+
+int main() {
+
+    int n;
+
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    vector<int> arr(n);
+
+    cout << "Enter elements:\n";
+
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+
+    int sum = 0;
+    int min = arr[0];
+    int max = arr[0];
+
+    // Parallel Reduction
+    #pragma omp parallel for reduction(+:sum) reduction(min:min) reduction(max:max)
+    for (int i = 0; i < n; i++) {
+
+        sum += arr[i];
+
+        if (arr[i] < min)
+            min = arr[i];
+
+        if (arr[i] > max)
+            max = arr[i];
+    }
+
+    double avg = (double)sum / n;
+
+    cout << "\nMinimum = " << min << endl;
+    cout << "Maximum = " << max << endl;
+    cout << "Sum = " << sum << endl;
+    cout << "Average = " << avg << endl;
+
+    return 0;
+}
+
+!g++ -fopenmp sort.cpp -o sort
+
+!./sort
+
+Enter size: 5
+Enter elements:
+5 1 4 2 3
+
+Bubble Sort:
+1 2 4 3 5 
+Time: 0.0001053
+
+Merge Sort:
+1 2 3 4 5 
+Time: 5.8029e-05
